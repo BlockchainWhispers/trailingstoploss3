@@ -23,6 +23,12 @@ function addLogo(coins, balances){
             balances[coinName].tradingPairs = [];
             //console.log(balances[coinName]);
         }
+        if(coinName == "BCC"){
+            balances[coinName].logoUrl = "https://www.cryptocompare.com" + coins['BCC'].ImageUrl;
+            balances[coinName].coinName = coins['BCC'].CoinName;
+            balances[coinName].symbol = coins['BCC'].Symbol;
+            balances[coinName].tradingPairs = [];         
+        }
     }
   }
 };

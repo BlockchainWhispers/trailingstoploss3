@@ -1,0 +1,244 @@
+<html >
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body ng-app="trailingStop">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+	<script src="/js/trailing.js"></script>
+	<script src="/js/sockets.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+	<div class="logo-title">
+		<div class="container">
+			<div class="centered">
+				<img class="col-centered" src="https://blockchainwhispers.com/assets/img/png/logo-about.png"><img>
+			</div>
+		</div>
+	</div>
+	<div class="spacing-top spacing-bot">
+		<h2 class="text-center">Trailing <span class="badge badge-danger">Stop Loss</span></h1>
+	</div>
+	<div ng-controller="trades">
+		<div class="container">
+			<div class="trade-table box spacing-top">
+				<div class="row">
+					<div class="spacing-bot">
+						A Trailing Stop Loss is a Stop-Limit that shifts its sell price according to price growth determined by laziness(ratio). A Stop-Limit order is an order to buy or sell a coin once the price reaches a specified price.
+						<a href="https://support.binance.com/hc/en-us/articles/115003372072" target="_blank" ng-if="cur_lang!='cn'">view more</a>
+					</div>
+				</div>
+				<form ng-submit="submit()" ng-if="!dataLoaded">
+					<div class="alert alert-warning" ng-cloak ng-if="warning" role="alert">
+						{{data.error}}
+					</div>
+					<div class="alert alert-danger" ng-cloak ng-if="danger" role="alert">
+					  Trailing Stop Loss server is Down!
+					</div>						
+					<div class="form-group">
+						<label for="API Key">API Key</label>
+						<input type="text" ng-model="data.userkeys.apikey" class="form-control" id="apiKey" placeholder="Enter API Key">
+					</div>
+					<div class="form-group">
+						<label for="Secret Key">Secret Key</label>
+						<input type="password" ng-model="data.userkeys.secretkey" class="form-control" id="secretKey" aria-describedby="apiKeyHelp" placeholder="Enter Secret Key">
+						<small id="apiKeyHelp" class="form-text text-muted">We'll never share your Secret Key with anyone.</small>
+					</div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+				<div class="row ng-cloak spacing-top"  ng-if="dataLoaded">
+					<div class="col-2">
+					</div>
+					<div class="col-8">
+						<div class="container">
+							<div class="row input-group input-group-sm mb-3 balance">
+								<div class="input-group-prepend">
+									<span class="input-group-text">Available Balances: </span>
+								</div>
+								<select ng-if="data.coins != null" ng-model="data.selectedCoin" ng-change="addTradingPair()" class="custom-select form-control-sm">
+									<option ng-repeat="option in data.coins | filterAvailableBalance" value="{{option.symbol}}">{{option.symbol + " - " + option.available}}</option>
+								</select>
+								<div class="input-group-append" ng-if="data.selectedCoin != null" ng-init="data.selectedCoinLogo = data.coins[data.selectedCoin].logoUrl">
+									<span class="input-group-text" ng-if="data.selectedCoinLogo != null">
+										<img ng-src="{{data.coins[data.selectedCoin].logoUrl}}" class="portrait input-sm"></img>
+									</span>
+									<span class="input-group-text">{{data.coins[data.selectedCoin].coinName}}</span>
+									<button class="btn btn-info" ng-click="submit()"><strong>Update Balance</strong></button>
+								</div>
+							</div>
+							<div class="row input-group input-group-sm mb-3 balance" ng-if="data.selectedCoin != null">
+								<div class="input-group-prepend">
+									<span class="input-group-text">Trading Pairs: </span>
+								</div>					
+								<select ng-model="data.selectedCoinPair" ng-change="getLatestPrice()" class="custom-select form-control-sm">
+									<option ng-repeat="option in data.tradingPairs" value="{{option.pair}}">{{option.pair}}</option>
+								</select>					
+							</div>						
+						</div>
+					</div>
+					<div class="col-2">
+					</div>
+				</div>			
+			</div>
+
+		</div>
+		<div class="main-app ng-cloak" ng-if="data.selectedCoinPair != null || data.tradeHistory.length > 0">
+			<div class="centered">
+				<div ng-class="col-sm-1">
+				</div>
+				<div class="col-sm-4 ng-cloak" ng-if="data.selectedCoinPair != null">
+
+					<div class="trade trade-table spacing-top title">
+						<div class="spacing-bot spacing-top">
+							<h5>Trade</h5>
+						</div>
+						<hr>														
+						<form name="stopSellForm" class="spacing-bot form-group-sm" id="tradeForm" class="needs-validation" novalidate ng-submit="stopLimit_sell_submit()">
+							<div class="trade-fields">
+								<div class="row" ng-if="data.lastPrice.last">
+									<label class="col-3 col-form-label trade-label">Current Price </label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-sm mb-3">
+											<input class="form-control form-control-sm field-right" id="lastprice" type="text" readonly ng-model="data.lastPrice.last"/>
+											<div class="input-group-append">
+												<span class="input-group-append input-sm input-group-text">{{data.selectedCoinPair.replace(data.selectedCoin + '/', '')}}</span>
+											</div>										
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<label for="stopPercentage" class="col-sm-3 col-form-label trade-label">Stop Distance (%) </label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-sm">
+												<input type="number" class="form-control form-control-sm field-right" ng-keypress="removeNegatives()" id="stopPercentage" ng-change="calculatePrice(data.trade.stop)" ng-model="data.trade.stop.percentage" aria-label="Stop">
+										        <div class="invalid-feedback form-control-sm mb-3">
+										          Please choose a Stop Distance greater than 0 and less than 99.
+										        </div>											
+												<input class="form-control field-right" id="stopPrice" type="text" readonly ng-model="data.trade.stop.price"/>
+											<div class="input-group-append">
+												<span class="input-group-text">{{data.selectedCoinPair.replace(data.selectedCoin + '/', '')}}</span>
+											</div>									
+										</div>
+										<small id="stopHelp" class="form-text text-muted mb-3">
+											When the coin reaches this price the sell order limit is set. Distance is defined by a percentage. (max 99)
+										</small>										
+									</div>
+								</div>
+								<div class="row">
+									<label for="limitPercentage" class="col-sm-3 col-form-label trade-label">Limit Distance (%) </label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-sm">
+											<input type="number" class="form-control form-control-sm field-right" ng-keypress="removeNegatives()" id="limitPercentage" ng-change="calculatePrice(data.trade.limit)" ng-model="data.trade.limit.percentage" aria-label="Limit">
+									        <div class="invalid-feedback">
+									          Please choose a Limit Distance greater than 0 and less than 99.
+									        </div>												
+											<input class="form-control field-right" id="limitPrice" type="text" readonly ng-model="data.trade.limit.price"/>
+											<div class="input-group-append">
+												<span class="input-group-text">{{data.selectedCoinPair.replace(data.selectedCoin + '/', '')}}</span>
+											</div>									
+										</div>
+										<small id="limitHelp" class="form-text text-muted mb-3">
+											The sell order will be executed at this price. Distance is defined by a percentage (max 99, suggestion: less or equal to stop distance so order comes through quicker)
+										</small>										
+									</div>
+								</div>
+								<div class="row">
+									<label for="coinAmount" class="col-sm-3 col-form-label trade-label">Trade Amount </label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-sm">
+											<input type="number" class="form-control form-control-sm field-right" ng-keypress="removeNegatives()" id="coinAmount" ng-change="calculateCoinsValue(true)" ng-model="data.trade.amount.coinAmount" aria-label="Amount">
+									        <div ng-if="data.minError" class="invalid-feedback">
+									          Please choose a valid coin amount above min value: {{data.minValue * 1.1}} {{data.selectedCoinPair.replace(data.selectedCoin + '/', '')}}
+									        </div>
+									        <div ng-if="data.maxError" class="invalid-feedback">
+									          The coin amount is above your balance of: {{data.coins[data.selectedCoin].available}} {{data.selectedCoin}}. Update balance if the amount displayed is not correct.
+									        </div>										        												
+											<input class="form-control field-right " id="amountPrice" type="text" readonly ng-model="data.trade.amount.price"/>
+											<div class="input-group-append">
+												<span class="input-group-text">{{data.selectedCoinPair.replace(data.selectedCoin + '/', '')}}</span>
+											</div>
+										</div>
+										<small id="amountHelp" class="form-text text-muted mb">
+											Amount of selected coin to trade.
+										</small>
+										<input type="range" value="0" ng-model="data.trade.amount.amountPercentage" ng-change="calculateAmount()" class="custom-range mb-3" id="amountRange">
+										<span ng-if="data.trade.amount.amountPercentage" class="text-muted">{{data.trade.amount.amountPercentage + "%"}}</span>
+									</div>									
+								</div>
+								<div class="row">
+									<label for="laziness" class="col-sm-3 col-form-label trade-label">Laziness (%)</label>
+									<div class="col-sm-9">
+										<div class="input-group input-group-sm">
+											<input type="number" class="form-control form-control-sm field-right" id="lazinessPercentage" ng-change="calculateSellPrice()" ng-model="data.trade.lazy.percentage" aria-label="Laziness">
+									        <div class="invalid-feedback">
+									          Please choose a laziness percentage above 0 (otherwise you will get blocked by Binance API, we recommend at least 1%)
+									        </div>											
+											<input class="form-control field-right" id="lazinessPrice" ng-keypress="removeNegatives()" type="text" readonly ng-model="data.trade.lazy.price"/>
+											<div class="input-group-append">
+												<span class="input-group-text">{{data.selectedCoinPair.replace(data.selectedCoin + '/', '')}}</span>
+											</div>
+										</div>
+										<small id="lazyHelp" class="form-text text-muted">
+											The sell order will be updated again when this price is reached. (max 99)
+										</small>													
+									</div>									
+								</div>
+								<hr class="trade-hr">														
+								<div class="form-group-row">
+									 <button type="submit" class="btn btn-danger btn-sm right spacing-bot" id="trail"><strong>Trailing Stop</strong></button>
+								</div>															
+							</div>
+						</form>							
+					</div>
+				</div>
+				<div ng-if="data.tradeHistory.length > 0" class="col-sm-6">
+					<div class="col-centered">
+						<div ng-class="{'tradingview-widget-container spacing-top trading-view-chart': data.selectedCoinPair != null, 'tradingview-widget-container spacing-top' : data.selectedCoinPair == null}">
+						  <div id="tradingview_aa131"></div>
+						  <div class="tradingview-widget-copyright" ><a ng-href="https://www.tradingview.com/symbols/BINANCE-{{data.selectedCoinPair.replace('/', '')}}/" rel="noopener" target="_blank">
+						  	<span class="blue-text">{{data.selectedCoinPair ? data.selectedCoinPair + " chart" : "Chart"}}</a> by TradingView</span></div>
+						</div>
+						<div class="orders trade-table spacing-top title ng-cloak" >
+							<div class="spacing-bot">
+								<h5 style="color: black">Running orders</h5>
+							</div>					
+							<table class="table table-striped trade-label">
+							<thead class="thead-dark">
+							<tr>
+							  <th scope="col">Trading Pair</th>
+							  <th scope="col">Amount</th>
+							  <th scope="col">Current Price</th>
+							  <th scope="col">Stop Price</th>
+							  <th scope="col">Limit Price</th>
+							  <th scope="col">Order Value</th>
+							  <th scope="col">Lazy price</th>
+							  <th scope="col">Remove Order</th>
+							</tr>
+							</thead>
+							<tbody>
+							    <tr ng-repeat="tradeHistory in data.tradeHistory track by $index">
+							      <td><strong>{{tradeHistory.pair}}</strong></td>
+							      <td>{{tradeHistory.amount.coinAmount}}</td>
+							      <td>{{tradeHistory.last}}</td>
+							      <td>{{tradeHistory.stop.price}}</td>
+							      <td>{{tradeHistory.limit.price}}</td>
+							      <td>{{tradeHistory.amount.price}}</td>
+							      <td>{{tradeHistory.lazy.price}}</td>
+							      <td class="cancel"><button  class="btn btn-danger btn-sm cancel-btn" ng-click="cancelOrder(tradeHistory)">Cancel <i class="fa fa-ban"></i></button></span></td>
+							    </tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>	
+				<div class="col-sm-1">
+				</div>
+			</div>	
+		</div>
+	</div>
+

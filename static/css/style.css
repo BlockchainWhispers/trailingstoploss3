@@ -1,0 +1,196 @@
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.contained {
+    width: 70%;
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+
+.centered { 
+    display: -webkit-flex; /* Safari */
+    -webkit-justify-content: center; /* Safari 6.1+ */
+    display: flex;
+    justify-content: center;    margin: auto;
+}
+
+
+.balance{
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.width-unset {
+    width: unset !important;
+}
+
+.title{
+    padding-bottom: 2px;
+    box-shadow: -1px 3px 20px #c5c5c5;
+    background-color: white;
+    padding-top: 10px;
+    margin-bottom: 25px;
+}
+
+.trade-label{
+    left: 5px;
+    bottom: 4px; 
+    font-size: 14px;
+}
+
+.logo-title{
+    background-color: #000000 !important;
+}
+
+body{
+  /*  font-size: 14px;
+    color: #323232;
+    font-family: "Georgia", Arial, sans-serif;
+    font-weight: 400;  */
+}
+
+.main-app{
+    margin-top: 15px;
+    padding-top: 15px;
+    background: black;
+}
+
+.trading-view-chart{
+    height: 300px !important;
+}
+
+.selectWidth {
+  width: auto;
+    margin:10px;
+  }
+
+.trade-hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.img-title{
+    margin-left: 260px;
+    /* color: black; */
+    height: 110;  
+}
+
+.spacing-bot{
+  margin-bottom: 10px;
+}
+
+.box{
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    border-radius: 15px;
+}
+
+.red{
+  color: #f21212;
+}
+
+.spacing-top{
+    margin-top: 10px;
+}
+
+.field-right{
+    text-align: right;
+}
+
+.end-label{
+    width: 8% !important;
+}
+
+.cancel{
+    padding: unset !important;
+}
+
+.cancel-btn{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.clear-row{
+  clear:both;
+}
+
+.trade-table{
+    background: #eaeaea; 
+    order-color: gray;
+    border: 1px solid rgba(0,0,0,.1);
+}
+
+.trade{
+    padding-top: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 45px;   
+}
+
+.orders {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin-top: 30px; 
+}
+
+.trade{
+    padding-top: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 45px;   
+}
+
+.orders {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;   
+}
+
+.blur{
+  box-shadow:
+    0 0 0 0px hsl(0, 0%, 89%), 
+    0 0 0 6px hsl(0, 0%, 89%)
+}
+
+.right{
+  float: right;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.coinlogo{
+  padding-right:3px;
+  padding-top: 3px; 
+  display:inline-block;
+}
+
+.portrait {
+    height: 18px;
+}
+
+.messages {
+  position: relative;
+}
+.message-row{
+  clear:both;
+}
+.message-list {
+  position: absolute;
+  bottom: 0;
+}
+
+.sent-message{
+  float: right;
+}
+
+.received-message {
+  float: left;
+}

@@ -1,0 +1,136 @@
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at order (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:182:9)
+    at Object.sell (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:622:13)
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:204:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:261:4)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:42:18)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at order (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:182:9)
+    at Object.sell (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:622:13)
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:204:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:261:4)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:42:18)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at order (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:182:9)
+    at Object.sell (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:622:13)
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:204:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:261:4)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:42:18)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: TypeError: Cannot read property 'pair' of undefined
+Stack: TypeError: Cannot read property 'pair' of undefined
+    at runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:184:34)
+    at binance.sell (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:211:6)
+    at C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:191:29
+    at Request._callback (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:148:20)
+    at Request.self.callback (C:\Users\Sebastian\node_modules\request\request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at IncomingMessage.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1085:12)
+    at Object.onceWrapper (events.js:272:13)
+Error: TypeError: Cannot read property 'pair' of undefined
+Stack: TypeError: Cannot read property 'pair' of undefined
+    at runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:184:34)
+    at binance.sell (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:211:6)
+    at C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:191:29
+    at Request._callback (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:148:20)
+    at Request.self.callback (C:\Users\Sebastian\node_modules\request\request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at IncomingMessage.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1085:12)
+    at Object.onceWrapper (events.js:272:13)
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at order (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:182:9)
+    at Object.sell (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:622:13)
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:205:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:280:4)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:42:18)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at Object.cancel (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:641:13)
+    at cancelOrder (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:110:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:283:3)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:42:18)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: TypeError: Cannot read property 'pair' of undefined
+Stack: TypeError: Cannot read property 'pair' of undefined
+    at runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:184:34)
+    at binance.sell (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:211:6)
+    at C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:191:29
+    at Request._callback (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:148:20)
+    at Request.self.callback (C:\Users\Sebastian\node_modules\request\request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at IncomingMessage.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1085:12)
+    at Object.onceWrapper (events.js:272:13)
+Error: TypeError: Cannot read property 'pair' of undefined
+Stack: TypeError: Cannot read property 'pair' of undefined
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:203:22)
+    at updateTrade (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:150:2)
+    at binance.orderStatus (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:163:3)
+    at C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:648:49
+    at Request._callback (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:148:20)
+    at Request.self.callback (C:\Users\Sebastian\node_modules\request\request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at IncomingMessage.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1085:12)
+Error: TypeError: Cannot read property 'pair' of undefined
+Stack: TypeError: Cannot read property 'pair' of undefined
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:203:22)
+    at updateTrade (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:150:2)
+    at binance.orderStatus (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:163:3)
+    at C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:648:49
+    at Request._callback (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:148:20)
+    at Request.self.callback (C:\Users\Sebastian\node_modules\request\request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at IncomingMessage.<anonymous> (C:\Users\Sebastian\node_modules\request\request.js:1085:12)
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at order (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:182:9)
+    at Object.sell (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:622:13)
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:217:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:294:4)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:42:18)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: Error: signedRequest: Invalid API Secret
+Stack: Error: signedRequest: Invalid API Secret
+    at signedRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:124:41)
+    at order (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:182:9)
+    at Object.sell (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:622:13)
+    at stopLoss (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:238:11)
+    at Object.runTrailingStop (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:315:4)
+    at Socket.<anonymous> (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:64:22)
+    at Socket.emit (events.js:180:13)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
+    at process._tickCallback (internal/process/next_tick.js:176:11)

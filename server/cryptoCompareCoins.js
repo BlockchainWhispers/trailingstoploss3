@@ -1,4 +1,6 @@
 //cryptoCompareCoins.js
+'use strict'
+
 var request = require('request');
 
 function ApiException(message) {

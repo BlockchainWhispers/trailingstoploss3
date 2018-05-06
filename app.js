@@ -1,3 +1,5 @@
+'use strict'
+
 var cors = require('cors');
 var express = require('express'),
     app = express(),

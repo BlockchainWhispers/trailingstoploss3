@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <!-- TradingView Widget BEGIN -->
+<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
+<!-- TradingView Widget END -->
+
+    <script>
+    function getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+var coinPair = getParameterByName('value');
+      var fxWidget = new TradingView.widget({
+			  "width": 900,
+			  "height": 300,
+			  "symbol": "BINANCE:" + coinPair,
+			  "interval": "30",
+			  "timezone": "Etc/UTC",
+			  "theme": "Light",
+			  "style": "1",
+			  "locale": "en",
+			  "toolbar_bg": "#f1f3f6",
+			  "enable_publishing": false
+	}); 
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>

@@ -197,7 +197,7 @@
 				</div>
 				<div class="col-sm-6 ng-cloak">
 					<div class="col-centered">
-						<iframe class="ng-cloak" src="/html/chart.html" frameBorder="0" id="content">
+						<iframe class="ng-cloak" ng-if="data.selectedCoinPair != null" src="/html/chart.html" frameBorder="0" id="content">
 						</iframe>
 						<div class="orders trade-table spacing-top title ng-cloak" ng-if="data.tradeHistory.length > 0">
 							<div class="spacing-bot">

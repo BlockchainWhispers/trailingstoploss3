@@ -1,4 +1,6 @@
 //binanceCalls.js
+'use strict'
+
 var coins = require('./cryptoCompareCoins.js');
 var request = require('request');
 var socket = require('socket.io')();

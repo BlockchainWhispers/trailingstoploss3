@@ -3,6 +3,11 @@ Prerequisites: Download NodeJs from: https://nodejs.org/en/download/
 1) Go to to your folder instalation path in console and type 
 	npm install 
 
+Example, you have downloaded the TrailingStopLoss to C:\TrailingStopLoss, open command prompt or terminal
+
+cd C:\TrailingStopLoss
+npm install
+
 This will install node-modules folder
 
 2) Type node app.js in console and start the server

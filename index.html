@@ -10,7 +10,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-	<script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
 	<script src="/js/trailing.js"></script>
 	<script src="/js/sockets.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
@@ -87,7 +86,7 @@
 			</div>
 
 		</div>
-		<div class="main-app ng-cloak" ng-if="data.selectedCoinPair != null || data.tradeHistory.length > 0">
+		<div ng-class="{'main-app': data.selectedCoinPair != null || data.tradeHistory.length > 0}">
 			<div class="centered">
 				<div ng-class="col-sm-1">
 				</div>
@@ -196,14 +195,11 @@
 						</form>							
 					</div>
 				</div>
-				<div ng-if="data.tradeHistory.length > 0" class="col-sm-6">
+				<div class="col-sm-6 ng-cloak">
 					<div class="col-centered">
-						<div ng-class="{'tradingview-widget-container spacing-top trading-view-chart': data.selectedCoinPair != null, 'tradingview-widget-container spacing-top' : data.selectedCoinPair == null}">
-						  <div id="tradingview_aa131"></div>
-						  <div class="tradingview-widget-copyright" ><a ng-href="https://www.tradingview.com/symbols/BINANCE-{{data.selectedCoinPair.replace('/', '')}}/" rel="noopener" target="_blank">
-						  	<span class="blue-text">{{data.selectedCoinPair ? data.selectedCoinPair + " chart" : "Chart"}}</a> by TradingView</span></div>
-						</div>
-						<div class="orders trade-table spacing-top title ng-cloak" >
+						<iframe class="ng-cloak" src="/html/chart.html" frameBorder="0" id="content">
+						</iframe>
+						<div class="orders trade-table spacing-top title ng-cloak" ng-if="data.tradeHistory.length > 0">
 							<div class="spacing-bot">
 								<h5 style="color: black">Running orders</h5>
 							</div>					

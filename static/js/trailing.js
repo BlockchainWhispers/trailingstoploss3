@@ -188,21 +188,8 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 	$scope.getLatestPrice = function(){
 		//$scope.data.trade = new Trade();
 
-		  new TradingView.widget(
-			  {
-			  "autosize": "true",
-			  "symbol": "BINANCE:" + $scope.data.selectedCoinPair.replace('/', ''),
-			  "interval": "D",
-			  "timezone": "Etc/UTC",
-			  "theme": "Light",
-			  "style": "1",
-			  "locale": "en",
-			  "toolbar_bg": "#f1f3f6",
-			  "enable_publishing": false,
-			  "allow_symbol_change": true,
-			  "container_id": "tradingview_aa131"
-			}
-			  );
+		document.getElementById('content').src = "/html/chart.html?value="+ $scope.data.selectedCoinPair.replace('/', '');
+        document.getElementById('content').style.display = "block";
 
 		$scope.data.decimals = 0;
 		var tradePair = $scope.data.tradingPairs.find( pair => pair.pair === $scope.data.selectedCoinPair);

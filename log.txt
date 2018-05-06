@@ -134,3 +134,15 @@ Stack: Error: signedRequest: Invalid API Secret
     at Socket.emit (events.js:180:13)
     at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\socket.io\lib\socket.js:527:12
     at process._tickCallback (internal/process/next_tick.js:176:11)
+Error: Error: apiRequest: Invalid API Key
+Stack: Error: apiRequest: Invalid API Key
+    at apiRequest (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:75:38)
+    at Object.options (C:\Users\Sebastian\node_modules\node-binance-api\node-binance-api.js:611:17)
+    at binanceOptions (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:30:11)
+    at Object.getBalances (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\server\binanceCalls.js:276:3)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\app.js:29:19
+    at Layer.handle [as handle_request] (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\express\lib\router\route.js:137:13)
+    at Route.dispatch (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\express\lib\router\route.js:112:3)
+    at Layer.handle [as handle_request] (C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\express\lib\router\layer.js:95:5)
+    at C:\Users\Sebastian\Documents\GitHub\TrailingStopLoss\node_modules\express\lib\router\index.js:281:22

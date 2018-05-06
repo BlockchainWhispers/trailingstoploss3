@@ -16,6 +16,12 @@
     justify-content: center;    margin: auto;
 }
 
+iframe{
+    display: none;
+    height: 320 !important;
+    width: 100% !important;
+    margin-top: 4px;
+}
 
 .balance{
     padding-left: 75px;
@@ -58,7 +64,6 @@ body{
 }
 
 .trading-view-chart{
-    height: 300px !important;
 }
 
 .selectWidth {

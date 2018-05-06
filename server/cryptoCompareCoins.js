@@ -24,9 +24,9 @@ function addLogo(coins, balances){
             //console.log(balances[coinName]);
         }
         if(coinName == "BCC"){
-            balances[coinName].logoUrl = "https://www.cryptocompare.com" + coins['BCC'].ImageUrl;
-            balances[coinName].coinName = coins['BCC'].CoinName;
-            balances[coinName].symbol = coins['BCC'].Symbol;
+            balances[coinName].logoUrl = "https://www.cryptocompare.com" + coins['BCH'].ImageUrl;
+            balances[coinName].coinName = coins['BCH'].CoinName;
+            balances[coinName].symbol = coins['BCH'].Symbol;
             balances[coinName].tradingPairs = [];         
         }
     }

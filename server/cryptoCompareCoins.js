@@ -99,7 +99,7 @@ module.exports = {
             // Start the request
             request(options, function (error, response, body) {
               if (!error && response.statusCode == 200) {
-                coins = JSON.parse(body);
+                var coins = JSON.parse(body);
 
                 addLogo(coins.Data, data.balances);
                 getTradingPairs(data.balances, data.ticker);

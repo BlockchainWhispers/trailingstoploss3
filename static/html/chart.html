@@ -18,8 +18,9 @@
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 var coinPair = getParameterByName('value');
+var width = getParameterByName('width');
       var fxWidget = new TradingView.widget({
-			  "width": screen.width / 1.80,
+			  "width": width,
 			  "height": 300,
 			  "symbol": "BINANCE:" + coinPair,
 			  "interval": "30",

@@ -188,7 +188,7 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 	$scope.getLatestPrice = function(){
 		//$scope.data.trade = new Trade();
 
-		document.getElementById('content').src = "/html/chart.html?value="+ $scope.data.selectedCoinPair.replace('/', '');
+		document.getElementById('content').src = "/html/chart.html?value="+ $scope.data.selectedCoinPair.replace('/', '') + "&width=" + Math.round(screen.width / 2.3).toString();
         document.getElementById('content').style.display = "block";
 
 		$scope.data.decimals = 0;

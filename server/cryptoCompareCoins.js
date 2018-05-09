@@ -15,23 +15,22 @@ function TradingPair(coinName){
 //functions
 function addLogo(coins, balances){
   for(var coinName in balances){
-    for(var coin in coins){
-        if(coinName == coin){
-            balances[coinName].logoUrl = "https://www.cryptocompare.com" + coins[coin].ImageUrl;
-            balances[coinName].coinName = coins[coin].CoinName;
-            balances[coinName].symbol = coins[coin].Symbol;
-            balances[coinName].tradingPairs = [];
-            //console.log(balances[coinName]);
+    var coinfromCryptoCompare = coins[coinName];
+
+         if(coinName == "BCC"){
+            balances['BCC'].logoUrl = "https://www.cryptocompare.com" + coins['BCH'].ImageUrl;
+            balances['BCC'].coinName = coins['BCH'].CoinName;
+            balances['BCC'].symbol = 'BCC';
+            balances['BCC'].tradingPairs = [];         
         }
-        // if(coinName == "BCC"){
-        //     balances['BCC'].logoUrl = "https://www.cryptocompare.com" + coins['BCH'].ImageUrl;
-        //     balances['BCC'].coinName = coins['BCH'].CoinName;
-        //     balances['BCC'].symbol = coins['BCH'].Symbol;
-        //     balances['BCC'].tradingPairs = [];         
-        // }
+        else if(coinfromCryptoCompare != null){
+            balances[coinName].logoUrl = "https://www.cryptocompare.com" + coins[coinName].ImageUrl;
+            balances[coinName].coinName = coins[coinName].CoinName;
+            balances[coinName].symbol = coins[coinName].Symbol;
+            balances[coinName].tradingPairs = []; 
+        }
     }
-  }
-};
+}
 
 function getTradingPairs(balances, ticker){
   for(var coinName in balances){

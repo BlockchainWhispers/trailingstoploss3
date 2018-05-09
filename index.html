@@ -16,7 +16,7 @@
 	<div class="logo-title">
 		<div class="container">
 			<div class="centered">
-				<img class="col-centered" src="https://blockchainwhispers.com/assets/img/png/logo-about.png"><img>
+				<a href="https://t.me/blockchainwhispers"><img class="col-centered" src="https://blockchainwhispers.com/assets/img/png/logo-about.png"><img></a>
 			</div>
 		</div>
 	</div>
@@ -29,8 +29,9 @@
 				<div class="row">
 					<div class="spacing-bot">
 						A Trailing Stop Loss is a Stop-Limit that shifts its sell price according to price growth determined by laziness(ratio). A Stop-Limit order is an order to buy or sell a coin once the price reaches a specified price.
-						<a href="https://support.binance.com/hc/en-us/articles/115003372072" target="_blank" ng-if="cur_lang!='cn'">view more</a>
+						<a class="spacing-bot" href="https://support.binance.com/hc/en-us/articles/115003372072" target="_blank" ng-if="cur_lang!='cn'">view more</a>
 					</div>
+					
 				</div>
 				<form ng-submit="submit()" ng-if="!dataLoaded">
 					<div class="alert alert-warning" ng-cloak ng-if="warning" role="alert">
@@ -82,14 +83,20 @@
 					</div>
 					<div class="col-2">
 					</div>
-				</div>			
+				</div>
+				<div class="row">
+					<div class="spacing-bot spacing-top">
+						<p>In case you find issues contact <a href="https://t.me/cosmicascension">@cosmicascension</a> on telegram for fixes, improvements and suggestions.
+						If you consider this application to be useful you can make a ETH donation to support the developers:
+							0x57d161C54542bB6119daDfb031B6798706B16842
+						</p>
+					</div>
+				</div>		
 			</div>
 
 		</div>
 		<div ng-class="{'main-app': data.selectedCoinPair != null || data.tradeHistory.length > 0}">
 			<div class="centered">
-				<div ng-class="col-sm-1">
-				</div>
 				<div class="col-sm-4 ng-cloak" ng-if="data.selectedCoinPair != null">
 
 					<div class="trade trade-table spacing-top title">
@@ -195,7 +202,7 @@
 						</form>							
 					</div>
 				</div>
-				<div class="col-sm-6 ng-cloak">
+				<div class="col-sm-8 ng-cloak">
 					<div class="col-centered">
 						<iframe class="ng-cloak" src="/html/chart.html" frameBorder="0" id="content">
 						</iframe>
@@ -232,8 +239,6 @@
 						</div>
 					</div>
 				</div>	
-				<div class="col-sm-1">
-				</div>
 			</div>	
 		</div>
 	</div>

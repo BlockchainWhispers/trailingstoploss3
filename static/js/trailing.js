@@ -31,10 +31,6 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 	socket.on('connect', function(){
 	});
 
-	// socket.on('message', function(data) {
-	//    console.log('Incoming message:', data);
-	// });
-
 
 	//get Latest Price
 	socket.on('send:price', function(data){
@@ -187,41 +183,42 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 
 	$scope.getLatestPrice = function(){
 		//$scope.data.trade = new Trade();
+		if ($scope.data.selectedCoinPair != null){
+			document.getElementById('content').src = "/html/chart.html?value="+ $scope.data.selectedCoinPair.replace('/', '') + "&width=" + Math.round(screen.width * 0.58).toString();
+	        document.getElementById('content').style.display = "block";
 
-		document.getElementById('content').src = "/html/chart.html?value="+ $scope.data.selectedCoinPair.replace('/', '') + "&width=" + Math.round(screen.width / 2.3).toString();
-        document.getElementById('content').style.display = "block";
+			$scope.data.decimals = 0;
+			var tradePair = $scope.data.tradingPairs.find( pair => pair.pair === $scope.data.selectedCoinPair);
+			if(tradePair){
+				var filter = tradePair.filters.find( filt => filt.filterType == "PRICE_FILTER");
 
-		$scope.data.decimals = 0;
-		var tradePair = $scope.data.tradingPairs.find( pair => pair.pair === $scope.data.selectedCoinPair);
-		if(tradePair){
-			var filter = tradePair.filters.find( filt => filt.filterType == "PRICE_FILTER");
+				var minValue = tradePair.filters.find( x => x.filterType == "MIN_NOTIONAL");
 
-			var minValue = tradePair.filters.find( x => x.filterType == "MIN_NOTIONAL");
+				if (minValue){
+					$scope.data.minValue = minValue.minNotional;
+				}
 
-			if (minValue){
-				$scope.data.minValue = minValue.minNotional;
+				var lotSize = tradePair.filters.find( x => x.filterType == "LOT_SIZE");
+
+				if(lotSize){
+					$scope.data.lotSize = (Number(lotSize.minQty) + 1);
+					$scope.data.lotSize = Number($scope.data.lotSize).countDecimals();
+					$scope.data.lotStepSize = lotSize.minQty;
+				}
+
+				$scope.data.trade.filter = tradePair.filters;
+				if (filter){
+					var minPrice = (Number(filter.minPrice) + 1).toFixed(8);
+					$scope.data.decimals = Number(minPrice).countDecimals();
+				}
 			}
 
-			var lotSize = tradePair.filters.find( x => x.filterType == "LOT_SIZE");
-
-			if(lotSize){
-				$scope.data.lotSize = (Number(lotSize.minQty) + 1);
-				$scope.data.lotSize = Number($scope.data.lotSize).countDecimals();
-				$scope.data.lotStepSize = lotSize.minQty;
-			}
-
-			$scope.data.trade.filter = tradePair.filters;
-			if (filter){
-				var minPrice = (Number(filter.minPrice) + 1).toFixed(8);
-				$scope.data.decimals = Number(minPrice).countDecimals();
-			}
+			socket.emit('price', { 
+				pair: $scope.data.selectedCoinPair.replace('/', ''),
+				subscription: $scope.data.lastPrice.subscription,
+				room: 'price'
+			});			
 		}
-
-		socket.emit('price', { 
-			pair: $scope.data.selectedCoinPair.replace('/', ''),
-			subscription: $scope.data.lastPrice.subscription,
-			room: 'price'
-		});
 	}
 
 	$scope.calculatePrice = function(tradeType){

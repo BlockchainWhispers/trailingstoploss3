@@ -32,3 +32,5 @@ c) You can only use one order per trading pair on each coin.
 d) If the balance is not displayed correctly please use the Update Balance button.
 
 
+
+

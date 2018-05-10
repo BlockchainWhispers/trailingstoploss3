@@ -1,15 +1,34 @@
-Prerequisites: Download NodeJs from: https://nodejs.org/en/download/
+Step 1) Download NodeJs Windows/macOS Installer from: https://nodejs.org/en/download/
+Step 2) Depending on your operating system open the following files from where you extracted
+	the TrailingStopLoss application
 
-1) Go to to your folder instalation path in console and type 
-	npm install 
+Windows:
+Run files in this order
+a) installWindows.bat
+b) startWindows.bat
 
-Example, you have downloaded the TrailingStopLoss to C:\TrailingStopLoss, open command prompt or terminal
+macOS:
+Run files in this order
+a) install.sh
+b) start.sh
 
-cd C:\TrailingStopLoss
-npm install
 
-This will install node-modules folder
+Step 3) Go to http://localhost:3000 in your browser of choice and login with your Binance API KEYS
+To create API Keys use this guide: https://3commas.zendesk.com/hc/en-us/articles/360000221733-Binance-creating-an-API-key-
 
-2) Type node app.js in console and start the server
-3) Go to localhost:3000 and start running trail orders.
+
+IMPORTANT
+
+a) After installing the app, please note that your start file will open the server.
+If you close your computer this application will stop. Each time you reopen 
+your computer, you will have to run the start file again.
+
+b) We recommend cancelling orders through the Trailing Stop Loss app, even though you can cancel from Binance
+too, there is a chance you might catch the order in an intermediate state (price shift) and the cancel from
+Binance won't work.
+
+c) You can only use one order per trading pair on each coin.
+
+d) If the balance is not displayed correctly please use the Update Balance button.
+
 

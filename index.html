@@ -86,7 +86,7 @@
 				</div>
 				<div class="row">
 					<div>
-						<p style="margin-bottom: 2px">In case you find issues contact <a target="_blank" href="https://t.me/cosmicascension">@cosmicascension</a> on telegram for fixes, improvements and suggestions.
+						<p style="margin-bottom: 20px">In case you find issues contact <a target="_blank" href="https://t.me/cosmicascension">@cosmicascension</a> on telegram for fixes, improvements and suggestions.
 						</p>
 					</div>
 				</div>		
@@ -180,7 +180,7 @@
 										<div class="input-group input-group-sm">
 											<input type="number" class="form-control form-control-sm field-right" id="lazinessPercentage" ng-change="calculateSellPrice()" ng-model="data.trade.lazy.percentage" aria-label="Laziness">
 									        <div class="invalid-feedback">
-									          Please choose a laziness percentage above 0 (otherwise you will get blocked by Binance API, we recommend at least 1%)
+									          Please choose a laziness percentage above 0 (otherwise you will get blocked by Binance API, we recommend at least 0.05%)
 									        </div>											
 											<input class="form-control field-right" id="lazinessPrice" ng-keypress="removeNegatives()" type="text" readonly ng-model="data.trade.lazy.price"/>
 											<div class="input-group-append">

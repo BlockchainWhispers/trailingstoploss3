@@ -223,11 +223,11 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 
 	$scope.calculatePrice = function(tradeType){
 		if(tradeType.percentage != null){
-			if(tradeType.type == "stop"){
+			if(tradeType.type == "stop" && tradeType.percentage > 99){
 				tradeType.percentage = $scope.removeExtraChars(tradeType.percentage, 2);
 			}
 
-			if(tradeType.type == "limit"){
+			if(tradeType.type == "limit" && tradeType.percentage > 99){
 				tradeType.percentage = $scope.removeExtraChars(tradeType.percentage, 2);
 			}
 

@@ -16,7 +16,12 @@ function TradingPair(coinName){
 function addLogo(coins, balances){
   for(var coinName in balances){
     var coinfromCryptoCompare = coins[coinName];
-
+		if(coinName == "YOYO"){
+            balances['YOYO'].logoUrl = "https://www.cryptocompare.com" + coins['YOYOW'].ImageUrl;
+            balances['YOYO'].coinName = coins['YOYOW'].CoinName;
+            balances['YOYO'].symbol = 'YOYO';
+            balances['YOYO'].tradingPairs = [];         
+        }	
          if(coinName == "BCC"){
             balances['BCC'].logoUrl = "https://www.cryptocompare.com" + coins['BCH'].ImageUrl;
             balances['BCC'].coinName = coins['BCH'].CoinName;

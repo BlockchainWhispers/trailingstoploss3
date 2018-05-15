@@ -341,8 +341,7 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 		if (!amount){
 			$scope.data.minError = true;
 		}else{
-			amount = fieldValidate(coinAmount, ($scope.data.trade.amount.coinAmount >= $scope.data.coins[$scope.data.selectedCoin].available
-				&& $scope.data.trade.amount.coinAmount > 0));
+			amount = fieldValidate(coinAmount, ($scope.data.trade.amount.coinAmount > Number($scope.data.coins[$scope.data.selectedCoin].available)));
 
 			if(!amount){
 				$scope.data.maxError = true;

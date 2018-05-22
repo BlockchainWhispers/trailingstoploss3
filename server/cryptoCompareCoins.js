@@ -31,7 +31,7 @@ function addLogo(coins, balances){
         if(coinName == "IOTA"){
           balances['IOTA'].logoUrl = "https://www.cryptocompare.com" + coins['IOT'].ImageUrl;
           balances['IOTA'].coinName = coins['IOT'].CoinName;
-          balances['IOTA'].symbol = 'IOT';
+          balances['IOTA'].symbol = 'IOTA';
           balances['IOTA'].tradingPairs = [];
         }
         else if(coinfromCryptoCompare != null){

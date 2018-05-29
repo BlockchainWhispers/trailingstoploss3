@@ -91,7 +91,7 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 	$scope.loadData = function(){
 		$http({
 			method: 'GET',
-			url: 'http://127.0.0.1:3000/balances/?apiKey=' + $scope.data.userkeys.apikey + "&secretKey=" + $scope.data.userkeys.secretkey
+			url: document.baseURI + 'balances/?apiKey=' + $scope.data.userkeys.apikey + "&secretKey=" + $scope.data.userkeys.secretkey
 		}).then(function successCallback(response) {
 	    // this callback will be called asynchronously
 	    // when the response is available
@@ -121,7 +121,7 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 	$scope.getTrade = function(){
 		$http({
 			method: 'GET',
-			url: 'http://127.0.0.1:3000/trades/'
+			url: document.baseURI + 'trades/'
 		}).then(function successCallback(response) {
 	    // this callback will be called asynchronously
 	    // when the response is available
@@ -142,7 +142,7 @@ app.controller('trades', function($scope, $http, $filter, socket, $location, $an
 	$scope.cancelOrder = function(trade){
 		$http({
 			method: 'GET',
-			url: 'http://127.0.0.1:3000/cancel/?pair=' + trade.pair + "&orderId=" + trade.orderId + "&subscription=" + trade.subscription 
+			url: document.baseURI + 'cancel/?pair=' + trade.pair + "&orderId=" + trade.orderId + "&subscription=" + trade.subscription 
 		}).then(function successCallback(response) {
 	    // this callback will be called asynchronously
 	    // when the response is available

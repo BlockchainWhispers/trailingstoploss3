@@ -28,6 +28,12 @@ function addLogo(coins, balances){
             balances['BCC'].symbol = 'BCC';
             balances['BCC'].tradingPairs = [];         
         }
+        if(coinName == "IOTA"){
+          balances['IOTA'].logoUrl = "https://www.cryptocompare.com" + coins['IOT'].ImageUrl;
+          balances['IOTA'].coinName = coins['IOT'].CoinName;
+          balances['IOTA'].symbol = 'IOTA';
+          balances['IOTA'].tradingPairs = [];
+        }
         else if(coinfromCryptoCompare != null){
             balances[coinName].logoUrl = "https://www.cryptocompare.com" + coins[coinName].ImageUrl;
             balances[coinName].coinName = coins[coinName].CoinName;
